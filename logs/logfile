@@ -1,0 +1,16 @@
+2024-06-13 18:50:40,360 __main__ ERROR:Traceback (most recent call last):
+  File "c:\Users\kabousselham\Desktop\python\Manning_sales_forecast_deep_learning_part_3\src\predict.py", line 36, in <module>
+    data_preprocessor=DataProcessor()
+  File "c:\Users\kabousselham\Desktop\python\Manning_sales_forecast_deep_learning_part_3\src\DataProcessor.py", line 28, in __init__
+    self.engine = create_engine(db_url)  # sqlalchemy engine for managing database connection
+  File "<string>", line 2, in create_engine
+  File "C:\Users\kabousselham\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\Users\kabousselham\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\create.py", line 546, in create_engine
+    u = _url.make_url(url)
+  File "C:\Users\kabousselham\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\url.py", line 842, in make_url
+    return _parse_url(name_or_url)
+  File "C:\Users\kabousselham\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\url.py", line 908, in _parse_url
+    raise exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: Could not parse SQLAlchemy URL from string ''
+

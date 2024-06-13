@@ -1,0 +1,17 @@
+fastapi
+ipykernel
+joblib
+matplotlib
+mlflow
+numpy
+optuna
+pandas
+psycopg2-binary
+pytorch-forecasting
+pytorch-lightning
+SQLAlchemy
+torch
+torchmetrics
+torchvision
+tqdm
+uvicorn
