@@ -121,8 +121,17 @@ def compute_eval_data_ratio(training_df, evaluation_df):
     mean_sales_ratio (float): Ratio of Mean sales of the eval data to Mean sales of the latest 28 days of training data
     stdev_sales_ratio (float): Std dev of the sales for eval data to Std dev of the sales for the latest 28 days of training data
     """
+    aggregated_train_df=training_df.tail(28).groupby(by='series_id').agg(train_average_sales=('sales',np.mean),
+                                                                train_stdev_sales=('sales',np.std))
+    aggregated_eval_df=evaluation_df.groupby(by='series_id').agg(eval_average_sales=('sales',np.mean),
+                                                                eval_stdev_sales=('sales',np.std))
+    ratios_df=aggregated_train_df.join(aggregated_eval_df)
+
+    ratios_df['drift_averages']=ratios_df['eval_average_sales']/ratios_df['train_average_sales']
+    ratios_df['drift_stdevs']=ratios_df['eval_stdev_sales']/ratios_df['train_stdev_sales']
+
     
-    mean_sales_ratio = None
-    stdev_sales_ratio = None
+    mean_sales_ratio = ratios_df['drift_averages'].mean()
+    stdev_sales_ratio = ratios_df['drift_stdevs'].mean()
 
     return mean_sales_ratio, stdev_sales_ratio

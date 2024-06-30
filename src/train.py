@@ -31,3 +31,17 @@ logger.addHandler(consoleHandler)
 logger.setLevel(logging.INFO)
 logger.propagate = False
 
+try:
+    # read in training data
+    dataprocessor = DataProcessor()
+    training_df, validation_df, test_df = dataprocessor.get_data_for_training()
+    logger.info("Training: data for training obtained")
+
+    # pass data to model
+    model = NBeatsModel()
+    model.hyperparameter_tuning(training_df, validation_df, test_df)
+    logger.info("Training: model training completed")
+
+except Exception:
+    logger.error(traceback.format_exc())
+
